@@ -1,5 +1,5 @@
 <?php 
-require_once('Config/conexion.php');
+require_once('Config/sesiones.php');
 ?>
 
 <!doctype html>

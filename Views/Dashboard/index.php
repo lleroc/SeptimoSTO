@@ -1,5 +1,5 @@
 <?php
-require_once('../../Config/conexion.php');
+require_once('../../Config/sesiones.php');
 if (isset($_SESSION['Usuario_IdRoles'])) {
 ?>
 <!doctype html>
