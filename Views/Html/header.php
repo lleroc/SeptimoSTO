@@ -49,9 +49,9 @@
                                 <a class="dropdown-item media" href="#">
                                     <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
                                     <div class="message media-body">
-                                        <span class="name float-left">Jonathan Smith</span>
+                                        <span class="name float-left"><?php echo $_SESSION['Usuarios_Nombres']; ?></span>
                                         <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
+                                        <p>Hello, this is an example msg</p> 
                                     </div>
                                 </a>
                                 <a class="dropdown-item media" href="#">
@@ -94,7 +94,7 @@
 
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="../html/salir.php"><i class="fa fa-power -off"></i>Salir</a>
                         </div>
                     </div>
 

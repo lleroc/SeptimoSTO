@@ -18,6 +18,7 @@ switch ($_GET['op']) {
             $_SESSION["Usuarios_Nombres"] = $res["Usuarios_Nombres"];
             $_SESSION["Usuarios_Apellidos"] = $res["Usuarios_Apellidos"];
             $_SESSION["Usuarios_Correo"] = $res["Usuarios_Correo"];
+            $_SESSION["Usuario_IdRoles"] = $res["Usuario_IdRoles"];
             header("Location:../Views/Dashboard/");
             exit();
         }else{

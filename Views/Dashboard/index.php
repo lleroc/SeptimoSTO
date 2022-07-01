@@ -1,4 +1,7 @@
-
+<?php
+require_once('../../Config/conexion.php');
+if (isset($_SESSION['Usuario_IdRoles'])) {
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
@@ -168,3 +171,8 @@
    
 </body>
 </html>
+<?php
+}else{
+    header('Location:../../index.php');
+}
+?>

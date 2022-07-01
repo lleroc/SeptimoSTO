@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class ClaseConectar
 {
     public $conexion;
@@ -18,6 +18,4 @@ class ClaseConectar
         if ($this->base == 0) die("error con la base de datos");
         return $this->conexion;
     }
-
-   
 }
