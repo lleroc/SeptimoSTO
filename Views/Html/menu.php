@@ -12,7 +12,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="menu-icon fa fa-cogs"></i>Usuarios</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Nuevo Usuario</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="../usuarios/">Nuevo Usuario</a></li>
                         </ul>
                     </li>
 
