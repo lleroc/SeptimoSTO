@@ -109,17 +109,17 @@ if (isset($_SESSION['Usuario_IdRoles'])) {
                     <div class="content">
                         <div class="animated fadeIn">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="card">
                                         <div class="card-header">
                                             <h4 class="box-title">Usuarios </h4>
                                             <hr>
-                                            <button class="btn btn-outline-success" data-toggle='modal' data-target='#modalUsuarios'>Nuevo Usuario</button>
+                                            <button class="btn btn-outline-success" data-toggle='modal' data-target='#modalUsuarios' onclick="cargaCombo()">Nuevo Usuario</button>
                                         </div>
                                         <div class="table-stats order-table ov-h">
 
 
-                                            <table class="table table-responsive table-bordered table-striped">
+                                            <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <th class="serial">#</th>
@@ -179,14 +179,14 @@ if (isset($_SESSION['Usuario_IdRoles'])) {
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                        <h5 class="modal-title" id="titulomodal">Insertar Usuario</h5>
                     </div>
                     <form method="post" id="usuarios_form">
                         <div class="modal-body">
-                            <input type="hidden" name="Usuarios_Id" id="Usuarios_Id ">
+                            <input type="hidden" name="Usuarios_Id" id="Usuarios_Id">
                             <div class="form-group">
                                 <label class="form-control-label">Nombres</label>
                                 <input type="text" name="Usuarios_Nombres" id="Usuarios_Nombres" class="form-control">
@@ -200,7 +200,7 @@ if (isset($_SESSION['Usuario_IdRoles'])) {
                                 <select name="Usuario_IdRoles" id="Usuario_IdRoles" class="form-control">
                                     <option value="0">Seleccion un Rol</option>
                                 </select>
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label class="form-control-label">Correo</label>
                                 <input type="text" name="Usuarios_Correo" id="Usuarios_Correo" class="form-control">

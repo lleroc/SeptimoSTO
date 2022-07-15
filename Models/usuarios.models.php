@@ -23,13 +23,67 @@ class ModeloUsuarios
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $cadena = "INSERT INTO `Usuarios`(`Usuarios_Id`, `Usuarios_Nombres`, `Usuarios_Apellidos`, ".
+        $cadena = "INSERT INTO `Usuarios`(`Usuarios_Nombres`, `Usuarios_Apellidos`, ".
         "`Usuarios_Correo`, `Usuarios_Contrasenia`, `Usuario_IdRoles`)  ".
         "VALUES ('$Usuarios_Nombres', '$Usuarios_Apellidos','$Usuarios_Correo','$Usuarios_Contrasenia', $Usuario_IdRoles)";
+        
         if (mysqli_query($con, $cadena)) {
-            return 'ok';
+            return '1';
         }else{
             return 'error';
         }
     }
+    public function editar($Usuarios_Id,$Usuarios_Nombres, $Usuarios_Apellidos,$Usuarios_Correo,$Usuarios_Contrasenia, $Usuario_IdRoles)
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "UPDATE `Usuarios` SET 
+        `Usuarios_Nombres`='$Usuarios_Nombres',
+        `Usuarios_Apellidos`='$Usuarios_Apellidos',
+        `Usuarios_Correo`='$Usuarios_Correo',
+        `Usuarios_Contrasenia`='$Usuarios_Contrasenia',
+        `Usuario_IdRoles`='$Usuario_IdRoles' WHERE 
+        `Usuarios_Id`=$Usuarios_Id";
+        if (mysqli_query($con, $cadena)) {
+            return '1';
+        }else{
+            return 'error';
+        }
+    }
+    public function eliminar($Usuarios_Id)
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "DELETE FROM `Usuarios` WHERE `Usuarios_Id`=$Usuarios_Id";
+        if (mysqli_query($con, $cadena)) {
+            return '1';
+        }else{
+            return 'error';
+        }
+       
+    }
+    public function uno($Usuarios_Id){
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT * FROM `Usuarios` WHERE `Usuarios_Id`=$Usuarios_Id ";
+        $datos=mysqli_query($con,$cadena);
+        return $datos;
+    }
+
+    public function Cambiar($Usuarios_Correo,$Usuarios_Contrasenia)
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "UPDATE `Usuarios` SET 
+        `Usuarios_Contrasenia`='$Usuarios_Contrasenia' 
+        WHERE `Usuarios_Correo`='$Usuarios_Correo'";
+        if (mysqli_query($con, $cadena)) {
+            return '1';
+        }else{
+            return 'error';
+        }
+       
+    }
+    
+
 }
