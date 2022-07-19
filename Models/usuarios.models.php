@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 require_once('../Config/conexion.php');
 class ModeloUsuarios
 {
@@ -78,12 +78,17 @@ class ModeloUsuarios
         `Usuarios_Contrasenia`='$Usuarios_Contrasenia' 
         WHERE `Usuarios_Correo`='$Usuarios_Correo'";
         if (mysqli_query($con, $cadena)) {
-            return '1';
+            return  'ok';
         }else{
             return 'error';
         }
-       
     }
-    
-
+    public function verifica($Usuarios_Correo){
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT count(*) as numero FROM `Usuarios` WHERE `Usuarios_Correo` ='$Usuarios_Correo'";
+        
+        $datos = mysqli_query($con, $cadena);
+        return $datos;
+    }
 }

@@ -3,9 +3,11 @@
 /**
  * TODO:Clase para realziar acciones con usuarios
  */
-error_reporting(0);
+
 require_once('../Models/usuarios.models.php');
+require_once('../Models/correo.php');
 $usuario = new ModeloUsuarios();
+$correo = new EnvioCorreos();
 switch ($_GET['op']) {
         //TODO:Procedimeinto para ingreso de usuarios
     case 'login':
@@ -62,7 +64,7 @@ switch ($_GET['op']) {
         $Usuario_IdRoles = $_POST['Usuario_IdRoles'];
         $Usuarios_Correo = $_POST['Usuarios_Correo'];
         $Usuarios_Contrasenia = $_POST['Usuarios_Contrasenia'];
-       
+
         $datos = array();
         $datos = $usuario->editar($Usuarios_Id, $Usuarios_Nombres, $Usuarios_Apellidos, $Usuarios_Correo, $Usuarios_Contrasenia, $Usuario_IdRoles);
         echo json_encode($datos);
@@ -82,4 +84,47 @@ switch ($_GET['op']) {
         }
         echo json_encode($uno);
         break;
+    case 'cambiar':
+        $con1 = $_POST['contrasenia1'];
+        $con2 = $_POST['contrasenia2'];
+        $correo = $_GET['correo'];
+        $clave = $_GET['clave'];
+        if ($con1 !== $con2) {
+            header("Location:../restablecer.php?op=2");
+            exit();
+        } else if ($correo == '' || $clave == '') {
+            header("Location:../index.php?op=3");
+            exit();
+        } else {
+            $datos = array();
+            $datos = $usuario->Cambiar($Usuarios_Correo, $Usuarios_Contrasenia);
+            echo $datos;
+            if ($datos == 'ok') {
+                header("Location:../index.php?op=4");
+                exit();
+            }
+        }
+        break;
+    case 'verifica':
+        $Usuarios_Correo = $_POST['Usuarios_Correo'];
+        if (empty($Usuarios_Correo)) {
+            header("Location:../contrasenia.php?op=2");
+            exit();
+        }
+        $datos = array();
+        $datos = $usuario->verifica($Usuarios_Correo);
+        $numero = (mysqli_fetch_assoc($datos));
+        if ((int)$numero['numero'] == 0) {
+            //no existe el correo en nuestra base de datos
+            header('Location:../contrasenia.php?op=1');
+            die();
+        } else {
+            //procedimeinto para enviar el correo
+            //cargar el modelo de correo
+            $envio = $correo->recuperar($Usuarios_Correo);
+            if ((int)$envio == 1) {
+                header("Location:../index.php");
+                exit();
+            }
+        }
 }

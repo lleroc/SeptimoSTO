@@ -2,10 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
-<!--<![endif]-->
-
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,9 +23,8 @@
     <link rel="stylesheet" href="public/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
-
 <body class="bg-dark">
 
     <div class="sufee-login d-flex align-content-center flex-wrap">
@@ -39,46 +35,40 @@
                         <img class="align-content" src="images/logo.png" alt="">
                     </a>
                 </div>
-
                 <div class="login-form">
-                    <form method="POST" action="controllers/usuarios.controllers.php?op=verifica">
-                    <?php
-                        if (isset($_GET["op"])) {
-                            switch ($_GET['op']) {
-                                case "1":
-                        ?>
-                                    <!--codigo html -->
-                                    <div class="form-group">
-                                        <div class="alert alert-danger">
-                                            El correo no existe
-                                        </div>
-                                    </div>
-                                <?php
-                                    break;
-                                case "2":
-                                ?>
-                                    <div class="form-group">
-                                        <div class="alert alert-danger">
-                                            Por favor, ingrese el correo
-                                        </div>
-                                    </div>
-                        <?php
-                            }
-                        }
-                        ?>
+                    <form method="POST" accion="">
                         <div class="form-group">
-                            <label>Correo Electrónico</label>
-                            <input id="Usuarios_Correo" name="Usuarios_Correo" type="email" class="form-control" placeholder="Email">
+                            <label>Nueva Contraseña</label>
+                            <input id="con1" type="password" class="form-control" placeholder="Contraseña" >
                         </div>
-                        <button type="submit" class="btn btn-primary btn-flat m-b-15">Enviar</button>
+                        <div class="form-group">
+                            <label>Ingrese Nuevamente la Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña" >
+                        </div>
+                        <button id="con2" type="button" onclick="cambiar()" class="btn btn-primary btn-flat m-b-15">Enviar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="public/assets/js/main.js"></script>
 
+    <script>
 
+function cambiar(){
+    var urlParametros = window.location.search;
+    var parametros = new URLSearchParams(urlParametros);
+    var correo = parametros.get('correo');
+    var clave = parametros.get('clave');
+    var contrasenia1 = document.getElementById('con1').value;
+    var contrasenia2 = document.getElementById('con2').value;
+}
+
+    </script>
 </body>
-
 </html>
